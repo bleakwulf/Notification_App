@@ -1,6 +1,7 @@
-const AWS_REGION = '<AWS REGION HERE';
-const AWS_ACCESS_KEY_ID = 'AWS KEY ID HERE';
-const AWS_SECRET_ACCESS_KEY = 'AWS SECRET KEY HERE';
+const AWS_REGION = process.env.AWS_REGION;
+const AWS_ACCESS_KEY_ID = process.env.AWS_ACCESS_KEY_ID;
+const AWS_SECRET_ACCESS_KEY = process.env.AWS_SECRET_ACCESS_KEY;
+const PORT = process.env.PORT;
 
 const AWS = require("aws-sdk");
 
@@ -20,8 +21,12 @@ AWS.config.update({
     secretAccessKey: AWS_SECRET_ACCESS_KEY
   });
 
-app.listen(3000, () => {
-    console.log("AWS SNS Server is running in port 3004");
+app.listen(PORT, () => {
+    console.log(`Notification Server is running in port ${PORT}`);
+});
+
+app.get("/", async(req, res) => { 
+    res.status(200).send("Welcome to Notification Server!");
 });
 
 app.post("/registerUser", async(req, res) => {

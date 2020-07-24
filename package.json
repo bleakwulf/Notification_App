@@ -4,6 +4,8 @@
   "description": "SNS Application using NodeJS",
   "main": "index.js",
   "scripts": {
+    "start_local": "node -r dotenv/config index.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -11,5 +13,8 @@
   "dependencies": {
     "aws-sdk": "^2.714.2",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
   }
 }
